@@ -12,6 +12,7 @@ RUN pip3 install qiskit==0.18.1
 RUN pip3 install pyquil==2.19.0
 RUN pip3 install tensorflow==2.1.0
 RUN pip3 install tensorflow-quantum==0.2.0
+RUN pip3 install gpyopt==1.2.6
 #RUN pip3 install qsharp==0.11.2003.3107
 
 ENTRYPOINT bash

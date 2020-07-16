@@ -30,6 +30,16 @@ RUN pip3 install tensorflow==2.1.0
 RUN pip3 install tensorflow-quantum==0.2.0
 RUN pip3 install gpyopt==1.2.6
 RUN pip3 install cvxopt==1.2.5
+RUN pip3 install scipy
+RUN pip3 install keras
+RUN pip3 install torch
+RUN pip3 install theano
+RUN pip3 install scikit-learn
+RUN pip3 install gym
+RUN pip3 install tensorboard
+RUN pip3 install jax
+RUN pip3 install jaxlib
+RUN pip3 install autograd
 
 # Install Rigetti QVM
 WORKDIR /root

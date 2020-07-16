@@ -1,7 +1,7 @@
 # Copyright Zapata Computing, Inc. All rights reserved.
 
 # Dockerfile for the base QE docker image
-FROM zapatacomputing/qe-tools-base
+FROM zapatacomputing/z-ml
 WORKDIR /app
 USER root
 
@@ -26,20 +26,10 @@ RUN pip3 install pennylane-forest==0.8.0
 RUN pip3 install pennylane-qsharp==0.8.0
 RUN pip3 install qiskit==0.18.1
 RUN pip3 install pyquil==2.19.0
-RUN pip3 install tensorflow==2.1.0
 RUN pip3 install tensorflow-quantum==0.2.0
 RUN pip3 install gpyopt==1.2.6
 RUN pip3 install cvxopt==1.2.5
-RUN pip3 install scipy
-RUN pip3 install keras
-RUN pip3 install torch
-RUN pip3 install theano
-RUN pip3 install scikit-learn
-RUN pip3 install gym
-RUN pip3 install tensorboard
-RUN pip3 install jax
-RUN pip3 install jaxlib
-RUN pip3 install autograd
+
 
 # Install Rigetti QVM
 WORKDIR /root

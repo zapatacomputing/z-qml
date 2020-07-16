@@ -7,7 +7,7 @@ For more details, see [orquestra.io/docs/qe/machine-learning/ml](https://www.orq
 ## Info
 
 * This image has [z-ml](https://github.com/zapatacomputing/z-ml) (and [qe-tools-base](https://github.com/zapatacomputing/qe-tools/blob/master/docker/qe-tools-base.Dockerfile)) as the base image.
-* QML and classical ML libraries are installed.
+* Purpose is for installing QML libraries.
 * Rigetti `qvm` and `quilc` (and [dependencies](http://docs.rigetti.com/en/stable/start.html)) are installed. More info [here](https://github.com/rigetti/qvm).
 
 ## Testing locally

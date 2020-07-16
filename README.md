@@ -15,7 +15,7 @@ For more details, see [orquestra.io/docs/qe/machine-learning/ml](https://www.orq
 Build the image inside `docker/`:
 
 ```bash
-docker build -t zqml -f z-qml.Dockerfile .
+docker build -t z-qml -f z-qml.Dockerfile .
 ```
 If it finished without errors, your image is ready for production.
 
@@ -28,5 +28,5 @@ docker images
 If you would like to inspect your docker container (i.e. go inside your container, inspect dir structure, run things, etc), you can run:
 
 ```bash
-docker run -it zqml sh
+docker run -it z-qml sh
 ```

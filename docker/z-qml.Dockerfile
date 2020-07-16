@@ -50,4 +50,5 @@ RUN git clone https://github.com/rigetti/qvm.git && \
                 make QVM_WORKSPACE=10240 qvm && \
                 mv qvm /usr/local/bin
 
+WORKDIR /app
 ENTRYPOINT bash

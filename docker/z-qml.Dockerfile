@@ -29,6 +29,7 @@ RUN pip3 install pyquil==2.19.0
 RUN pip3 install tensorflow-quantum==0.2.0
 RUN pip3 install gpyopt==1.2.6
 RUN pip3 install cvxopt==1.2.5
+RUN pip3 install sympy==1.6.1
 
 
 # Install Rigetti QVM

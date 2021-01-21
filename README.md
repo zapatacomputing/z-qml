@@ -12,10 +12,10 @@ For more details, see [orquestra.io/docs/qe/machine-learning/ml](https://www.orq
 
 ## Testing locally
 
-Build the image inside `docker/`:
+Build the image:
 
 ```bash
-docker build -t z-qml -f z-qml.Dockerfile .
+docker build -t z-qml .
 ```
 If it finished without errors, your image is ready for production.
 

@@ -34,7 +34,6 @@ RUN pip3 install \
         gpyopt \
         cvxopt
 
-
 # Install Rigetti QVM
 # TODO figure out nightly build installation
 WORKDIR /root
@@ -54,6 +53,9 @@ RUN git clone https://github.com/rigetti/qvm.git && \
     git checkout v1.17.0 && \
     make QVM_WORKSPACE=10240 qvm && \
     mv qvm /usr/local/bin
+
+#TODO using legacy version to avoid pip install dependency hell
+RUN pip3 install pip==20.0.2
 
 WORKDIR /app
 ENTRYPOINT bash

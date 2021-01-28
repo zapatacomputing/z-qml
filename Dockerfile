@@ -42,7 +42,7 @@ RUN curl -O https://beta.quicklisp.org/quicklisp.lisp && \
 RUN git clone https://github.com/rigetti/quilc.git && \
     cd quilc && \
     git fetch && \
-    git checkout v1.18.0 && \
+    git checkout v1.23.0 && \
     git submodule init && \
     git submodule update --init && \
     make && \
@@ -50,12 +50,12 @@ RUN git clone https://github.com/rigetti/quilc.git && \
 RUN git clone https://github.com/rigetti/qvm.git && \
     cd qvm && \
     git fetch && \
-    git checkout v1.17.0 && \
+    git checkout v1.17.1 && \
     make QVM_WORKSPACE=10240 qvm && \
     mv qvm /usr/local/bin
 
 #TODO using legacy version to avoid pip install dependency hell
-RUN pip3 install pip==20.0.2
+RUN pip3 install pip==20.2.4
 
 WORKDIR /app
 ENTRYPOINT bash

@@ -1,7 +1,7 @@
 # Copyright Zapata Computing, Inc. All rights reserved.
 
 # Dockerfile for the base QE docker image
-FROM zapatacomputing/z-ml:nightly
+FROM zapatacomputing/qe-tools-base:nightly
 WORKDIR /app
 USER root
 
@@ -20,19 +20,34 @@ RUN apt-get clean && \
         liblapack-dev && \
     apt-get clean
 
-# Install QML Libraries
-RUN pip3 install \
-        pennylane \
-        pennylane-qiskit \
-        pennylane-cirq \
-        pennylane-forest \
-        pennylane-qsharp \
-        qiskit \
-        pyquil \
-        tensorflow \
-        tensorflow-quantum \
-        gpyopt \
-        cvxopt
+# Install ML Libraries
+# pytorch installation will OOM fail without --no-cache-dir
+# https://stackoverflow.com/questions/59800318/how-to-install-torch-in-python
+RUN pip3 install --no-cache-dir \
+    scipy \
+    scikit-learn \
+    theano \
+    keras \
+    torch \
+    gym \
+    jax \
+    jaxlib \
+    autograd \
+    tensorflow \
+    tensorboard \
+    tensorflow-estimator \
+    tensornetwork \
+    pennylane \
+    pennylane-qiskit \
+    pennylane-cirq \
+    pennylane-forest \
+    pennylane-qsharp \
+    qiskit \
+    pyquil \
+    tensorflow \
+    tensorflow-quantum \
+    gpyopt \
+    cvxopt
 
 # Install Rigetti QVM
 # TODO figure out nightly build installation

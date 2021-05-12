@@ -14,6 +14,7 @@ RUN apt-get clean && \
         htop \
         sbcl \
         clang-7 \
+        gfortran \
         libzmq3-dev \
         libz-dev \
         libblas-dev \
@@ -54,13 +55,10 @@ RUN pip3 install --no-cache-dir \
 WORKDIR /root
 RUN curl -O https://beta.quicklisp.org/quicklisp.lisp && \
     echo '(quicklisp-quickstart:install)'  | sbcl --load quicklisp.lisp
-RUN git clone https://github.com/rigetti/quilc.git && \
+RUN git clone --recurse-submodules https://github.com/rigetti/quilc.git && \
     cd quilc && \
-    git fetch && \
-    git checkout v1.23.0 && \
-    git submodule init && \
-    git submodule update --init && \
-    make && \
+    git checkout v1.24.0 && \
+    make quilc && \
     mv quilc /usr/local/bin
 RUN git clone https://github.com/rigetti/qvm.git && \
     cd qvm && \

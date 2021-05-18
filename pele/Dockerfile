@@ -11,5 +11,7 @@ RUN apt-get install gcc gfortran g++ && \
     cd pele && \ 
     python3 setup.py build_ext -i --fcompiler=gfortran
 
+ENV PYTHONPATH "${PYTHONPATH}:/app/pele"
+
 WORKDIR /app
 ENTRYPOINT bash

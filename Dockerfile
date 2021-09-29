@@ -24,7 +24,6 @@ RUN apt-get clean && \
 # Install ML Libraries
 # pytorch installation will OOM fail without --no-cache-dir
 # https://stackoverflow.com/questions/59800318/how-to-install-torch-in-python
-# pin cirq<=0.10 until openfermion publishes a version compatible with cirq v0.11
 RUN pip3 install --no-cache-dir \
     scipy \
     scikit-learn \
@@ -39,7 +38,7 @@ RUN pip3 install --no-cache-dir \
     tensorboard \
     tensorflow-estimator \
     tensornetwork \
-    "cirq<=0.10" \
+    cirq \
     pennylane \
     pennylane-qiskit \
     pennylane-cirq \

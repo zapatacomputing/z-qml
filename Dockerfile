@@ -49,6 +49,7 @@ RUN pip3 install --upgrade pip setuptools && \
         pyquil \
         tensorflow \
         tensorflow-quantum \
+        optuna \
         gpyopt \
         cvxopt
 

@@ -1,0 +1,55 @@
+Running 
+1000 runs per:
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=8, n_gates=64, random_seed=1) is 17.070874569000352 | 15.925351701000181
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=8, n_gates=64, random_seed=2) is 16.624992311999904 | 15.69009768199976
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=8, n_gates=64, random_seed=3) is 16.56930389299987 | 15.787384703999578
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=8, n_gates=64, random_seed=4) is 16.526814849999937 | 15.842423015999884
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=8, n_gates=64, random_seed=5) is 16.212931731000026 | 15.475690335999843
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=12, n_gates=144, random_seed=1) is 32.415330822000215 | 33.17530686600003
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=12, n_gates=144, random_seed=2) is 31.939925607000077 | 32.33095395200007
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=12, n_gates=144, random_seed=3) is 31.485154975000114 | 32.517275343000165
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=12, n_gates=144, random_seed=4) is 31.76356799799987 | 32.0188441639998
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=16, n_gates=256, random_seed=1) is 53.363715345999935 | 56.40795173499964
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=16, n_gates=256, random_seed=2) is 52.823793941000076 | 56.9670637119998
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=16, n_gates=256, random_seed=3) is 51.94639489900055 | 54.77621508199991
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=16, n_gates=256, random_seed=4) is 52.64546629899996 | 57.63045036299991
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=20, n_gates=400, random_seed=1) is 83.35853024700009 | 90.13659486100005
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=20, n_gates=400, random_seed=2) is 81.72597938299987 | 87.34256297000047
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=20, n_gates=400, random_seed=3) is 79.75540796199948 | 85.66285556000003
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=20, n_gates=400, random_seed=4) is 80.67274425300002 | 86.62916413599942
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=24, n_gates=576, random_seed=1) is 169.6043083100003 | 177.83120686500024
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=24, n_gates=576, random_seed=2) is 169.10257403000014 | 176.49617906500043
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=24, n_gates=576, random_seed=3) is 157.1416503370001 | 162.43814504500006
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=24, n_gates=576, random_seed=4) is 163.35290670599989 | 172.12796799400076
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=28, n_gates=784, random_seed=1) is 1326.6062803779987 | 1362.4907443770007
+
+10 runs:
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=16, n_gates=256, random_seed=1) is 1.493560377999529 | 1.10860984700048 | 0.7676590500013845
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=16, n_gates=256, random_seed=2) is 1.5110460569994757 | 0.5350090659994748 | 0.5763911440008087
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=16, n_gates=256, random_seed=3) is 1.4881444789989473 | 0.5205436859996553 | 0.5520486830009759
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=16, n_gates=256, random_seed=4) is 1.579857147000439 | 0.5325979159988492 | 0.5693409659997997
+
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=20, n_gates=400, random_seed=1) is 24.251855722000982 | 1.3588643870007218 | 1.0852303970004868
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=20, n_gates=400, random_seed=2) is 24.04860378900048 | 0.8016694000016287 | 0.8703157859999919
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=20, n_gates=400, random_seed=3) is 24.029957998998725 | 0.784320872000535 | 0.8353018399993744
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=20, n_gates=400, random_seed=4) is 25.18285920299968 | 0.8019021170002816 | 0.8596054869994987
+
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=24, n_gates=576, random_seed=1) is 661.974165433001 | 2.2645307339989813 | 2.0168256269971607
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=24, n_gates=576, random_seed=2) is 701.8346946950005 | 1.7014798160016653 | 1.7808031360000314
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=24, n_gates=576, random_seed=3) is 739.6917668019996 | 1.6100354609989154 | 1.6740284670013352
+Wall time CPU/GPUCUSTATEVEC/GPUCUDA Experiment(n_qubits=24, n_gates=576, random_seed=4) is 718.0149358480012 | 1.6583335650029767 | 1.7795271790018887
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=28, n_gates=784, random_seed=1) is 13.816048999000486 | 13.821661803000097
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=28, n_gates=784, random_seed=2) is 12.384156639000139 | 12.595712547999938
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=28, n_gates=784, random_seed=3) is 12.54558819200065 | 12.923715404000177
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=28, n_gates=784, random_seed=4) is 12.653067720999388 | 12.978983496001092
+
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=30, n_gates=900, random_seed=1) is 57.047676738999144 | 57.95147882499987
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=30, n_gates=900, random_seed=2) is 49.90378354799941 | 51.324204163000104
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=30, n_gates=900, random_seed=3) is 53.257131161999496 | 54.465247354000894
+Wall time WITH/WITHOUT custatevec for experiment Experiment(n_qubits=30, n_gates=900, random_seed=4) is 53.491836048999176 | 55.02763881399915

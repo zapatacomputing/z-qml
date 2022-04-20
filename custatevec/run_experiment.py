@@ -13,16 +13,16 @@ class Experiment:
     n_qubits: int
     n_gates: int
     random_seed: int
+    include_cirq: bool
+    n_iterations: int
 
 
 # https://quantumai.google/qsim/tutorials/gcp_gpu#optional_use_the_nvidia_cuquantum_sdk
-def run_experiment(
-    experiment: Experiment, include_cirq: bool = False, n_iterations: int = 1000
-):
+def run_experiment(exp: Experiment):
     z_circuit = create_random_circuit(
-        experiment.n_qubits,
-        experiment.n_gates,
-        np.random.default_rng(experiment.random_seed),
+        exp.n_qubits,
+        exp.n_gates,
+        np.random.default_rng(exp.random_seed),
     )
     cirq_circuit = export_to_cirq(z_circuit)
     # this is done in qe-cirq, not sure if we need it
@@ -30,13 +30,14 @@ def run_experiment(
 
     # Try With qe-cirq, no gpu
     cirq_avg_walltime = -1.0
-    if include_cirq:
+    if exp.include_cirq:
         cirq_simulator = CirqSimulator()
         cirq_avg_walltime = (
             timeit.timeit(
-                lambda: cirq_simulator.get_wavefunction(z_circuit), number=n_iterations
+                lambda: cirq_simulator.get_wavefunction(z_circuit),
+                number=exp.n_iterations,
             )
-            / n_iterations
+            / exp.n_iterations
         )
 
     # Try WITH custatevec (gpu_mode=1)
@@ -45,9 +46,10 @@ def run_experiment(
     )
     custatevec_avg_walltime = (
         timeit.timeit(
-            lambda: qsim_simulator.simulate(cirq_circuit), number=n_iterations
+            lambda: qsim_simulator.simulate(cirq_circuit),
+            number=exp.n_iterations,
         )
-        / n_iterations
+        / exp.n_iterations
     )
 
     # Try WITHOUT custatevec (gpu_mode=0), only CUDA mode
@@ -56,22 +58,31 @@ def run_experiment(
     )
     cuda_avg_walltime = (
         timeit.timeit(
-            lambda: qsim_simulator.simulate(cirq_circuit), number=n_iterations
+            lambda: qsim_simulator.simulate(cirq_circuit),
+            number=exp.n_iterations,
         )
-        / n_iterations
+        / exp.n_iterations
     )
 
     print(
-        f"{experiment} N={n_iterations} Avg wall time CPU/CUSTATEVEC/CUDA is | {cirq_avg_walltime} | {custatevec_avg_walltime} | {cuda_avg_walltime}"
+        f"{exp},{exp.n_iterations},{cirq_avg_walltime},{custatevec_avg_walltime},{cuda_avg_walltime}"
     )
 
 
 if __name__ == "__main__":
     experiments = [
-        Experiment(8, 8**2, 1),
-        Experiment(12, 12**2, 1),
-        Experiment(16, 16**2, 1),
-        Experiment(20, 20**2, 1),
-        Experiment(24, 24**2, 1),
+        Experiment(8, 8**2, 1, True, 1000),
+        Experiment(12, 12**2, 1, True, 1000),
+        Experiment(16, 16**2, 1, True, 1000),
+        Experiment(18, 18**2, 1, True, 1000),
+        Experiment(20, 20**2, 1, False, 1000),
+        Experiment(24, 24**2, 1, False, 1000),
+        Experiment(28, 28**2, 1, False, 1000),
+        Experiment(30, 30**2, 1, False, 1000),
+        Experiment(32, 32**2, 1, False, 1000),
     ]
-    _ = [run_experiment(experiment, True, 10000) for experiment in experiments]
+    # print header line
+    print(
+        "experiment,n_iterations,cirq_avg_walltime,custatevec_avg_walltime,cuda_avg_walltime"
+    )
+    _ = [run_experiment(exp) for exp in experiments]

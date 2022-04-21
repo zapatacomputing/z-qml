@@ -74,7 +74,7 @@ def run_experiment(exp: Experiment):
     )
 
     print(
-        f"{exp},{exp.n_iterations},{cirq_avg_walltime},{qecirq_avg_walltime},{custatevec_avg_walltime},{cuda_avg_walltime}"
+        f"{exp.n_qubits},{exp.n_gates},{exp.n_iterations},{cirq_avg_walltime},{qecirq_avg_walltime},{custatevec_avg_walltime},{cuda_avg_walltime}"
     )
 
 
@@ -94,6 +94,6 @@ if __name__ == "__main__":
     ]
     # print header line
     print(
-        "experiment,n_iterations,cirq_avg_walltime,qecirq_avg_walltime,custatevec_avg_walltime,cuda_avg_walltime"
+        "n_qubits,n_gates,n_iterations,cirq_avg_walltime,qecirq_avg_walltime,custatevec_avg_walltime,cuda_avg_walltime"
     )
     _ = [run_experiment(exp) for exp in experiments]

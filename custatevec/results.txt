@@ -1,8 +1,0 @@
-experiment,n_iterations,cirq_avg_walltime,custatevec_avg_walltime,cuda_avg_walltime
-Experiment(n_qubits=8, n_gates=64, random_seed=1, include_cirq=True, n_iterations=1000),1000,0.010107240416999957,0.016065223668999807,0.01444884324199984
-Experiment(n_qubits=12, n_gates=144, random_seed=1, include_cirq=True, n_iterations=1000),1000,0.02686384150599997,0.029600923133999913,0.03063566952400015
-Experiment(n_qubits=16, n_gates=256, random_seed=1, include_cirq=True, n_iterations=1000),1000,0.14848386435699967,0.04968019511700004,0.05291168477200017
-Experiment(n_qubits=18, n_gates=324, random_seed=1, include_cirq=True, n_iterations=1000),1000,0.5243573182360005,0.061291518382000504,0.06604070649699952
-Experiment(n_qubits=20, n_gates=400, random_seed=1, include_cirq=False, n_iterations=1000),1000,-1.0,0.07600325923299989,0.0845108315870002
-Experiment(n_qubits=24, n_gates=576, random_seed=1, include_cirq=False, n_iterations=1000),1000,-1.0,0.27036732037500044,0.2758342989749999
-Experiment(n_qubits=28, n_gates=784, random_seed=1, include_cirq=False, n_iterations=1000),1000,-1.0,3.0065714292659997,3.052537556182

@@ -30,11 +30,20 @@ def run_experiment(exp: Experiment):
 
     # Try With qe-cirq, no gpu
     cirq_avg_walltime = -1.0
+    qecirq_avg_walltime = -1.0
     if exp.include_cirq:
-        cirq_simulator = CirqSimulator()
+        cirq_simulator = cirq.Simulator()
         cirq_avg_walltime = (
             timeit.timeit(
-                lambda: cirq_simulator.get_wavefunction(z_circuit),
+                lambda: cirq_simulator.simulate(cirq_circuit),
+                number=exp.n_iterations,
+            )
+            / exp.n_iterations
+        )
+        qecirq_simulator = CirqSimulator()
+        qecirq_avg_walltime = (
+            timeit.timeit(
+                lambda: qecirq_simulator.get_wavefunction(z_circuit),
                 number=exp.n_iterations,
             )
             / exp.n_iterations
@@ -65,24 +74,26 @@ def run_experiment(exp: Experiment):
     )
 
     print(
-        f"{exp},{exp.n_iterations},{cirq_avg_walltime},{custatevec_avg_walltime},{cuda_avg_walltime}"
+        f"{exp},{exp.n_iterations},{cirq_avg_walltime},{qecirq_avg_walltime},{custatevec_avg_walltime},{cuda_avg_walltime}"
     )
 
 
 if __name__ == "__main__":
     experiments = [
-        Experiment(8, 8**2, 1, True, 1000),
-        Experiment(12, 12**2, 1, True, 1000),
-        Experiment(16, 16**2, 1, True, 1000),
-        Experiment(18, 18**2, 1, True, 1000),
-        Experiment(20, 20**2, 1, False, 1000),
-        Experiment(24, 24**2, 1, False, 1000),
-        Experiment(28, 28**2, 1, False, 1000),
-        Experiment(30, 30**2, 1, False, 1000),
-        Experiment(32, 32**2, 1, False, 1000),
+        Experiment(10, 10**2, 1, True, 100),
+        Experiment(12, 12**2, 1, True, 100),
+        Experiment(14, 14**2, 1, True, 100),
+        Experiment(16, 16**2, 1, True, 100),
+        Experiment(18, 18**2, 1, True, 100),
+        Experiment(20, 20**2, 1, True, 10),
+        Experiment(22, 22**2, 1, False, 10),
+        Experiment(26, 26**2, 1, False, 10),
+        Experiment(28, 28**2, 1, False, 10),
+        Experiment(30, 30**2, 1, False, 10),
+        Experiment(32, 32**2, 1, False, 10),
     ]
     # print header line
     print(
-        "experiment,n_iterations,cirq_avg_walltime,custatevec_avg_walltime,cuda_avg_walltime"
+        "experiment,n_iterations,cirq_avg_walltime,qecirq_avg_walltime,custatevec_avg_walltime,cuda_avg_walltime"
     )
     _ = [run_experiment(exp) for exp in experiments]

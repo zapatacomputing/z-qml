@@ -15,7 +15,7 @@ RUN apt-get update -y --fix-missing && \
     update-alternatives --set python3 /usr/bin/python3.7 && \
     apt-get install -y curl git openssh-client && \
     apt-get install -y \
-        wget vim htop sbcl clang-7 gfortran\
+        wget vim htop sbcl clang-7 gfortran \
         libzmq3-dev libz-dev libblas-dev liblapack-dev && \
     apt-get clean
 
@@ -26,6 +26,7 @@ ENV PYTHONPATH="/usr/local/lib/python3.7/dist-packages:${PYTHONPATH}"
 # https://stackoverflow.com/questions/59800318/how-to-install-torch-in-python
 RUN pip3 install --upgrade pip setuptools && \
     pip3 install --no-cache-dir \
+        numpy \
         scipy \
         scikit-learn \
         torch \
@@ -35,7 +36,6 @@ RUN pip3 install --upgrade pip setuptools && \
         autograd \
         cirq \
         qiskit \
-        pyquil \
         optuna \
         gpyopt \
         cvxopt

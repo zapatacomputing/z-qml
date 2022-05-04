@@ -20,20 +20,24 @@ RUN apt-get update -y --fix-missing && \
     apt-get clean
 
 ENV PYTHONPATH="/usr/local/lib/python3.7/dist-packages:${PYTHONPATH}"
+# PYTHONUNBUFFERED will dump python stdout to logs directly, rather than buffering
+# should resolve issue of not seeing python print statements in orquestra logs
+ENV PYTHONUNBUFFERED="1"
 
 # Install ML Libraries
 # pytorch installation will OOM fail without --no-cache-dir
 # https://stackoverflow.com/questions/59800318/how-to-install-torch-in-python
 RUN pip3 install --upgrade pip setuptools && \
     pip3 install --no-cache-dir \
+        dill \
         numpy \
         scipy \
         scikit-learn \
         torch \
-        gym \
         jax \
         jaxlib \
         autograd \
+        flax \
         cirq \
         qiskit \
         optuna \

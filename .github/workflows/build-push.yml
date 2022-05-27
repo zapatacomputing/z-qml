@@ -1,4 +1,4 @@
-name: Create staging bundle
+name: Docker Build and Push
 
 on:
   push:

@@ -10,10 +10,12 @@ jobs:
     steps:
       - name: Trigger cicd-actions repository workflow 
         run: |
-              curl -H "Authorization: token "$USER_TOKEN -H 'Accept: application/vnd.github.everest-preview+json' "https://api.github.com/repos/zapatacomputing/cicd-actions/dispatches" -d '{"event_type": "buildandpush", "client_payload": {"repository": "'"$repository"'", "ref": "'"$ref"'", "path_to_dockerfile": "'"$path_to_dockerfile"'", "image_version": "'"$image_version"'"}}'
+              curl -H "Authorization: token "$USER_TOKEN -H 'Accept: application/vnd.github.everest-preview+json' "https://api.github.com/repos/zapatacomputing/cicd-actions/dispatches" -d '{"event_type": "buildandpush", "client_payload": {"repository": "'"$repository"'", "ref": "'"$ref"'", "path_to_dockerfile": "'"$path_to_dockerfile"'", "docker_context_path": "'"$docker_context_path"'", "image_version": "'"$image_version"'"}}'
         env:
           USER_TOKEN: ${{ secrets.cicd_actions_user }}
           repository: ${{ github.repository }}
           ref: ${{ github.ref }}
           path_to_dockerfile: 'custatevec/Dockerfile'
+          docker_context_path: 'custatevec'
           image_version: v${{ github.run_number }}
+          

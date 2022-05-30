@@ -28,11 +28,10 @@ jobs:
                 }
               '
         env:
-          USER_TOKEN: ${{ secrets.PAGES_TOKEN }}
-          repository: ${{github.repository}}
+          USER_TOKEN: ${{ secrets.cicd_actions_user }}
+          repository: ${{ github.repository }}
           ref: ${{ github.ref }}
           image_version: v${{ github.run_number }}
-          path_to_dockerfile: 'cmd/Dockerfile'
-          docker_context_path: '.'
-    
+          path_to_dockerfile: 'custatevec/Dockerfile'
+          docker_context_path: 'custatevec'
           

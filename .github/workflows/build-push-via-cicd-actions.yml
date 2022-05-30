@@ -1,0 +1,38 @@
+name: Build and Push Image #by triggering cicd-actions workflow via Github API Call
+
+on:
+  push:
+    branches: [ feature/custatevec, feature/ZCLOUD-260/add-ci-with-github-actions ]
+  
+jobs:
+  trigger-build-and-push:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Trigger cicd-actions repository workflow over Github API
+        run: |
+              curl \
+              "https://api.github.com/repos/zapatacomputing/cicd-actions/dispatches" \
+              -H "Authorization: token "$USER_TOKEN \
+              -H 'Accept: application/vnd.github.everest-preview+json' \
+              --data-raw '
+              {
+                "event_type": "buildandpush", 
+                "client_payload": 
+                    {
+                      "repository": "'"$repository"'", 
+                      "ref": "'"$ref"'", 
+                      "path_to_dockerfile": "'"$path_to_dockerfile"'", 
+                      "docker_context_path": "'"$docker_context_path"'", 
+                      "image_version": "'"$image_version"'" 
+                    } 
+                }
+              '
+        env:
+          USER_TOKEN: ${{ secrets.PAGES_TOKEN }}
+          repository: ${{github.repository}}
+          ref: ${{ github.ref }}
+          image_version: v${{ github.run_number }}
+          path_to_dockerfile: 'cmd/Dockerfile'
+          docker_context_path: '.'
+    
+          

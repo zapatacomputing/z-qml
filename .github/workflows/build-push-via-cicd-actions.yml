@@ -16,7 +16,7 @@ jobs:
               -H 'Accept: application/vnd.github.everest-preview+json' \
               --data-raw '
               {
-                "event_type":  "'"$repository"' / '"$ref"'", 
+                "event_type":  "'"$repository"' | '"$ref"'", 
                 "client_payload": 
                     {
                       "repository": "'"$repository"'", 

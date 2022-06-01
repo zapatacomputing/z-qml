@@ -2,7 +2,7 @@ name: Build and Push Image #by triggering cicd-actions workflow via Github API C
 
 on:
   push:
-    branches: [ feature/custatevec, feature/ZCLOUD-260/add-ci-with-github-actions ]
+    branches: [ feature/custatevec ]
   
 jobs:
   trigger-build-and-push:

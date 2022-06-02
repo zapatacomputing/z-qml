@@ -1,6 +1,10 @@
 # Mounted gpu has cuda v11.6
 FROM nvcr.io/nvidia/cuquantum-appliance:22.02-cirq
 
+# https://askubuntu.com/questions/1408016/the-following-signatures-couldnt-be-verified-because-the-public-key-is-not-avai
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub && \
+    apt-get update
+
 # Install python/pip and git/cmake (needed for qsim-custatevec build)
 # ARG CMAKE_VERSION=3.22.1
 # RUN apt-get update && \

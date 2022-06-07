@@ -2,7 +2,7 @@ name: Build and Push Image #by triggering cicd-actions workflow via Github API C
 
 on:
   push:
-    branches: [ main, feature/custatevec, feature/ci-multiimage-build-test ]
+    branches: [ main ]
   
 jobs:
   trigger-build-and-push:

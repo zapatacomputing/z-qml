@@ -1,8 +1,8 @@
-name: Build and Push Image #by triggering cicd-actions workflow via Github API Call
+name: Build and Push Image z-qml #by triggering cicd-actions workflow via Github API Call
 
 on:
   push:
-    branches: [ feature/custatevec ]
+    branches: [ main ]
   
 jobs:
   trigger-build-and-push:
@@ -23,7 +23,8 @@ jobs:
                       "ref": "'"$ref"'", 
                       "path_to_dockerfile": "'"$path_to_dockerfile"'", 
                       "docker_context_path": "'"$docker_context_path"'", 
-                      "image_version": "'"$image_version"'" 
+                      "image_version": "'"$image_version"'",
+                      "target_docker_repository": "'"$target_docker_repository"'"                       
                     } 
                 }
               '
@@ -32,6 +33,6 @@ jobs:
           repository: ${{ github.repository }}
           ref: ${{ github.ref }}
           image_version: v${{ github.run_number }}
-          path_to_dockerfile: 'custatevec/Dockerfile'
-          docker_context_path: 'custatevec'
-          
+          path_to_dockerfile: 'Dockerfile'
+          docker_context_path: '.'
+          target_docker_repository: 'zapatacomputing/z-qml'

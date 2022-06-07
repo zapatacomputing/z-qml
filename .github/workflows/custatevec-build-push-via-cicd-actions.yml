@@ -23,7 +23,7 @@ jobs:
                       "ref": "'"$ref"'", 
                       "path_to_dockerfile": "'"$path_to_dockerfile"'", 
                       "docker_context_path": "'"$docker_context_path"'", 
-                      "image_version": "'"$image_version"'"
+                      "image_version": "'"$image_version"'",
                       "target_docker_repository": "'"$target_docker_repository"'"                       
                     } 
                 }

@@ -1,6 +1,8 @@
 # Mounted gpu has cuda v11.6
 FROM nvcr.io/nvidia/cuquantum-appliance:22.02-cirq
 
+WORKDIR /app
+
 # https://askubuntu.com/questions/1408016/the-following-signatures-couldnt-be-verified-because-the-public-key-is-not-avai
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub && \
     apt-get update

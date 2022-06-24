@@ -1,0 +1,38 @@
+name: Build and Push Image z-qml #by triggering cicd-actions workflow via Github API Call
+
+on:
+  push:
+    branches: [ main ]
+  
+jobs:
+  trigger-build-and-push:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Trigger cicd-actions repository workflow over Github API
+        run: |
+              curl \
+              "https://api.github.com/repos/zapatacomputing/cicd-actions/dispatches" \
+              -H "Authorization: token "$USER_TOKEN \
+              -H 'Accept: application/vnd.github.everest-preview+json' \
+              --data-raw '
+              {
+                "event_type":  "'"$repository"' | '"$ref"'", 
+                "client_payload": 
+                    {
+                      "repository": "'"$repository"'", 
+                      "ref": "'"$ref"'", 
+                      "path_to_dockerfile": "'"$path_to_dockerfile"'", 
+                      "docker_context_path": "'"$docker_context_path"'", 
+                      "image_version": "'"$image_version"'",
+                      "target_docker_repository": "'"$target_docker_repository"'"                       
+                    } 
+                }
+              '
+        env:
+          USER_TOKEN: ${{ secrets.cicd_actions_user }}
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref }}
+          image_version: v${{ github.run_number }}
+          path_to_dockerfile: 'Dockerfile'
+          docker_context_path: '.'
+          target_docker_repository: 'zapatacomputing/z-qml'

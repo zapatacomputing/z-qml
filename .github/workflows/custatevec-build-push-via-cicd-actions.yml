@@ -1,7 +1,6 @@
 name: Build and Push Image z-quantum-gpu #by triggering cicd-actions workflow via Github API Call
 
 on:
-  workflow_dispatch:
   push:
     tags:
       - '*'

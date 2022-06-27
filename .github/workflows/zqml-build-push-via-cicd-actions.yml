@@ -2,6 +2,7 @@ name: Build and Push Image z-qml #by triggering cicd-actions workflow via Github
 
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'

@@ -1,10 +1,13 @@
 name: Build and Push Image z-qml #by triggering cicd-actions workflow via Github API Call
 
+
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
-  
+    tags:
+      - '*'
+  workflow_dispatch:
+
 jobs:
   trigger-build-and-push:
     runs-on: ubuntu-20.04
@@ -23,9 +26,10 @@ jobs:
                       "repository": "'"$repository"'", 
                       "ref": "'"$ref"'", 
                       "path_to_dockerfile": "'"$path_to_dockerfile"'", 
-                      "docker_context_path": "'"$docker_context_path"'", 
-                      "image_version": "'"$image_version"'",
-                      "target_docker_repository": "'"$target_docker_repository"'"                       
+                      "docker_context_path": "'"$docker_context_path"'",
+                      "target_docker_repository": "'"$target_docker_repository"'",
+                      "github_sha": "'"$github_sha"'",
+                      "build_number": "'"$build_number"'"
                     } 
                 }
               '
@@ -33,7 +37,8 @@ jobs:
           USER_TOKEN: ${{ secrets.cicd_actions_user }}
           repository: ${{ github.repository }}
           ref: ${{ github.ref }}
-          image_version: v${{ github.run_number }}
+          github_sha: ${{ github.sha }}
+          build_number: ${{ github.run_number }}
           path_to_dockerfile: 'Dockerfile'
           docker_context_path: '.'
           target_docker_repository: 'zapatacomputing/z-qml'
